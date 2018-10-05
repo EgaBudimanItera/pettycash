@@ -58,6 +58,34 @@ class Pengeluarankas extends CI_Controller {
         $this->load->view('template/footer');
     }
 
+    function download($filename = NULL) {
+      // load download helder
+      $this->load->helper('download');
+      // read file contents
+      $data = file_get_contents(base_url('/assets/file_upload/'.$filename));
+      force_download($filename, $data);
+    }
+
+    public function detailnota($nopengeluaran){
+      $query="SELECT * FROM filenota where nopengeluaran='$nopengeluaran'";
+      $data=array(
+        'page' => 'pengeluaran/detailnota',
+        'link' => 'pengeluaran',
+        'script'=>'script/pengeluaran',
+        'list'=>$this->Petty_cash->kueri($query)->result(),
+        'breadcrumb' => array(
+            'Beranda' => base_url() . 'berandaadmin',
+            'Data Pengeluaran Kas' => base_url() . 'pengeluarankas',
+            'Nota Pengeluaran Kas' => base_url() . 'pengeluarankas/detailnota',
+        ),
+      );
+      $this->load->view('template/header',$data);
+      $this->load->view('template/sidebar');
+      $this->load->view('template/content');
+      $this->load->view('template/footer');
+    }
+
+
     public function detail($nopengeluaran){
       $query="SELECT *,sum(jkeluar) as total FROM kas join unit on kas.idunit=unit.idunit where nopengeluaran='$nopengeluaran'";
       $dinas=array(
@@ -275,7 +303,7 @@ class Pengeluarankas extends CI_Controller {
        $keterangan=$this->input->post('keterangan',true);
        $jkeluar=$this->input->post('jkeluar',true);
        $user=$this->session->userdata('userNama');
-       $user="e";
+       
        $data=array(
         'idjenis'=>$idjenis,
         'keterangan'=>$keterangan,
@@ -315,9 +343,30 @@ class Pengeluarankas extends CI_Controller {
          }
     }
 
+    public function proseshapus($nopengeluaran){
+      $query="SELECT *,sum(jkeluar) as total from kas where nopengeluaran='$nopengeluaran' GROUP BY nopengeluaran";
+      $totaljkeluar=$this->Petty_cash->kueri($query)->row()->total;
+      $nopengisian=$this->Petty_cash->kueri($query)->row()->nopengisian;
+      $query2="SELECT sisa FROM kas where nopengisian='$nopengisian'";
+      $sisa=$this->Petty_cash->kueri($query2)->row()->sisa;
+      $sisa=$sisa+$totaljkeluar;
+      $data=array(
+        'sisa'=>$sisa
+      );
+      $update=$this->Petty_cash->update('nopengisian',$nopengisian,'kas',$data);
+      $hapus=$this->Petty_cash->hapus('nopengeluaran',$nopengeluaran,'kas');
+      $hapus2=$this->Petty_cash->hapus('nopengeluaran',$nopengeluaran,'filenota');
+
+      if($hapus && $hapus2 && $update){
+        echo '<script>alert("Berhasil Hapus  !!Data Pengeluaran Kas Kecil Dihapus");window.location = "'.base_url().'pengeluarankas";</script>';
+      }else{
+         echo '<script>alert("Gagal Hapus  !!Data Pengeluaran Kas Kecil Tidak Dihapus");window.location = "'.base_url().'pengeluarankas";</script>';
+      }
+    } 
+
     public function prosessimpan(){
       $user=$this->session->userdata('userNama');
-      $user="e";
+      
       $nopengeluaran=$this->Petty_cash->nopengeluaran();
       $nopengisian=$this->input->post('nopengisian',true);
       $idunit=$this->input->post('idunit',true);

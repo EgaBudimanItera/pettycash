@@ -21,7 +21,7 @@ class Petty_cash extends CI_Model {
     }
 
     function cek_login($where){      
-        return $this->db->get_where('users',$where);
+        return $this->db->get_where('user',$where);
     }
 
     function cek_login_pelanggan($where){      

@@ -20,54 +20,37 @@ class Auth extends CI_Controller {
 	}
    
     public function index(){
-        $data = array(
-            'page' => 'jenispengeluaran/data',
-            'link' => 'jenispengeluaran',
-            'script'=>'',
-            'list'=>'',
-            'breadcrumb' => array(
-                'Beranda' => base_url() . 'berandaadmin',
-                'Data jenispengeluaran' => base_url() . 'jenispengeluaran'),
-        );
-        $this->load->view('template/header',$data);
-        $this->load->view('template/sidebar');
-        $this->load->view('template/content');
-        $this->load->view('template/footer');
+       $this->load->view('auth/login');
     }
 
-    public function formtambah(){
-        $data = array(
-            'page' => 'jenispengeluaran/formtambah',
-            'link' => 'jenispengeluaran',
-            'script'=>'',
-            'list'=>'',
-            'breadcrumb' => array(
-                'Beranda' => base_url() . 'berandaadmin',
-                'Data jenispengeluaran' => base_url() . 'jenispengeluaran',
-                'Tambah jenispengeluaran' => base_url() . 'jenispengeluaran/formtambah',
-            ),
+    public function authuser(){
+        $userNama=$this->input->post('userNama',true);
+        $userPassword=$this->input->post('userPassword',true);
+        $where=array(
+              'userNama'=>$userNama,
+              'userPassword'=>$userPassword,
         );
-        $this->load->view('template/header',$data);
-        $this->load->view('template/sidebar');
-        $this->load->view('template/content');
-        $this->load->view('template/footer');
-    }
+        $cek=$this->Petty_cash->cek_login($where)->num_rows(); 
+        if($cek!=0){
+          $data_session = array(
+              'userNama' => $userNama,
+              'userHakakses'=>$this->Petty_cash->cek_login($where)->row()->userHakakses,
+              'userId'=>$this->Petty_cash->cek_login($where)->row()->userId,
+              'status' => "login",
+          );
 
-    public function formedit(){
-        $data = array(
-            'page' => 'jenispengeluaran/formedit',
-            'link' => 'jenispengeluaran',
-            'script'=>'',
-            'list'=>'',
-            'breadcrumb' => array(
-                'Beranda' => base_url() . 'berandaadmin',
-                'Data jenispengeluaran' => base_url() . 'jenispengeluaran',
-                'Edit jenispengeluaran' => base_url() . 'jenispengeluaran/formedit',
-            ),
-        );
-        $this->load->view('template/header',$data);
-        $this->load->view('template/sidebar');
-        $this->load->view('template/content');
-        $this->load->view('template/footer');
+          $this->session->set_userdata($data_session);
+          echo '<script>alert("user ditemukan!");window.location = "'.base_url().'berandaadmin";</script>';
+          
+        }
+        else{
+          echo '<script>alert("Maaf, username atau password salah!");window.location = "'.base_url().'auth";</script>';
+          
+        }   
+    }
+    
+    public function logout(){
+      $this->session->sess_destroy();
+      echo '<script>alert("Terima Kasih!");window.location = "'.base_url().'";</script>';
     }
 }

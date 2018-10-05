@@ -19,11 +19,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="<?php if($link=='' ||$link=="dashboard"){echo'active';}?> treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-          </a>
-        </li>
+        <li class="<?php if($link=='beranda'){echo'active';}?>"><a href="<?=base_url()?>berandaadmin"><i class="fa fa-home"></i> Home</a></li>
        
         <li class="<?php if($link=='unit' ||$link=="jenispengeluaran"){echo'active';}?> treeview">
           <a href="#">
@@ -62,7 +58,7 @@
           </ul>
         </li>
 
-        <li class="<?php if($link=='lapisi' ||$link=="lapkeluar"){echo'active';}?> treeview">
+        <li class="<?php if($link=='laporan'){echo'active';}?> treeview">
           <a href="#">
             <i class="fa fa-user-secret"></i>
             <span>Laporan</span>
@@ -71,8 +67,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="<?php if($link=='lapisi'){echo'active';}?>"><a href="<?=base_url()?>laporanisi"><i class="fa fa-briefcase"></i> Pengisian Petty Cash</a></li>
-            <li class="<?php if($link=='lapkeluar'){echo'active';}?>"><a href="<?=base_url()?>laporankeluar"><i class="fa fa-building"></i> Pengeluaran Petty Cash</a></li>
+            <li class="<?php if($link=='laporan'){echo'active';}?>"><a href="<?=base_url()?>laporan"><i class="fa fa-briefcase"></i> Petty Cash</a></li>
           </ul>
         </li>
       </ul>
