@@ -38,7 +38,11 @@ class Pengeluarankas extends CI_Controller {
 
     public function formtambah(){
         $query="SELECT * FROM kas where status='1' and statusisi='0' order by idkas desc limit 1";
-        $data = array(
+        $sisakas=$this->Petty_cash->kueri($query)->num_rows();
+        if($sisakas==NULL){
+          echo '<script>alert("Warning !!Kas Tidak Ada");window.location = "'.base_url().'pengeluarankas";</script>';    
+        }else{
+          $data = array(
             'page' => 'pengeluaran/formtambah',
             'link' => 'pengeluaran',
             'script'=>'script/pengeluaran',
@@ -51,11 +55,13 @@ class Pengeluarankas extends CI_Controller {
                 'Data Pengeluaran Kas' => base_url() . 'pengeluarankas',
                 'Tambah Pengeluaran Kas' => base_url() . 'pengeluarankas/formtambah',
             ),
-        );
-        $this->load->view('template/header',$data);
-        $this->load->view('template/sidebar');
-        $this->load->view('template/content');
-        $this->load->view('template/footer');
+          );
+          $this->load->view('template/header',$data);
+          $this->load->view('template/sidebar');
+          $this->load->view('template/content');
+          $this->load->view('template/footer');  
+        }
+        
     }
 
     function download($filename = NULL) {
