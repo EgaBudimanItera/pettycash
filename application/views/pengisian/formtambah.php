@@ -34,6 +34,11 @@
                     <input type="text" class="form-control" value="<?=$nopengisian?>" readonly name="nopengisian" placeholder="No Pengisian Kas">
                   </div>
                   
+                  
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Jumlah Pengisian Kas</label>
+                    <input type="number" class="form-control"  required="" name="jmasuk" placeholder="Jumlah Pengisian Kas">
+                  </div> 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Tanggal Pengisian</label>
                     <div class="input-group date">
@@ -42,10 +47,6 @@
                       </div>
                       <input type="text" required="" class="form-control" id="tglisi" name="tanggal">
                     </div>
-                  </div> 
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Jumlah Pengisian Kas</label>
-                    <input type="number" class="form-control"  required="" name="jmasuk" placeholder="Jumlah Pengisian Kas">
                   </div> 
                    <div class="form-group">
                     <label for="exampleInputEmail1">Diverifikasi Oleh</label>
@@ -62,14 +63,14 @@
                   <div class="form-group">
                     <img src="<?=base_url()?>assets/noimage.png" id="gambar1" width="200" alt="Preview Gambar" />
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="exampleInputEmail1">Berita Acara Pengisian Kas</label>
                     <input type="file" class="form-control" required="" name="file2" placeholder="Berita acara pengisian Kas Kecil" id="file2preview">
                     
                   </div>
                   <div class="form-group">
                     <img src="<?=base_url()?>assets/noimage.png" id="gambar2" width="200" alt="Preview Gambar" />
-                  </div>
+                  </div> -->
                 </div>
 
               </div>

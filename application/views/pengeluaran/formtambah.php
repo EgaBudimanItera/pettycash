@@ -19,7 +19,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tambah Data Bahan Baku
+        Tambah Data Pengeluaran Petty Cash
       </h1>
       <?php $this->load->view('template/breadcrumb')?>
     </section>

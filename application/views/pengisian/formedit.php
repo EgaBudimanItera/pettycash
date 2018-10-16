@@ -63,7 +63,7 @@
                   <div class="form-group">
                     <img src="<?=base_url()?>assets/file_upload/<?=$list->file1?>" id="gambar1" width="200" alt="Preview Gambar" />
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="exampleInputEmail1">Berita Acara Pengisian Kas</label>
                     <input type="file" class="form-control" name="file2" id="file2preview">
                     <span>
@@ -73,7 +73,7 @@
                   </div>
                   <div class="form-group">
                     <img src="<?=base_url()?>assets/file_upload/<?=$list->file2?>" id="gambar2" width="200" alt="Preview Gambar" />
-                  </div>
+                  </div> -->
                 </div>
 
               </div>

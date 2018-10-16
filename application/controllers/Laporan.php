@@ -47,6 +47,19 @@ class Laporan extends CI_Controller {
         $daritanggal=date_format(date_create($this->input->post('daritanggal',true)),"Y-m-d");
         $hinggatanggal=date_format(date_create($this->input->post('hinggatanggal',true)),"Y-m-d");
 
-        $query="";
+        $query="SELECT * FROM kas where tanggal between '$daritanggal' and '$hinggatanggal' and statusisi='1' and statushapus='1'";
+        $data=array(
+            'list'=>$this->Petty_cash->kueri($query)->result(),
+        );
+        $this->load->view('laporan/rekap',$data);
+    }
+
+    public function mpp($nopengisian){
+        $query="SELECT * FROM kas where nopengisian='$nopengisian'";
+        $data=array(
+            'list'=>$this->Petty_cash->kueri($query)->row(),
+            
+        );
+        $this->load->view('laporan/mpp',$data);
     }
 }

@@ -24,7 +24,7 @@
             </div>
             <!-- /.box-header -->
 
-            <!-- <form action="<?=base_url()?>laporan/rekap" role="form" method="post" class="form-horizontal" target="_blank">
+            <form action="<?=base_url()?>laporan/rekap" role="form" method="post" class="form-horizontal" target="_blank">
               <div class="box-body">
                 <div class="col-md-4">
                   <div class="form-group">
@@ -59,7 +59,7 @@
                 </div>
                  
               </div>    
-            </form> -->
+            </form>
             
             <!-- <div class="box-body">
               <div id="info-alert"><?=@$this->session->flashdata('msg')?></div> 
@@ -72,6 +72,7 @@
                       <th>No Pengisian Kas</th>
                       <th>Tanggal</th>
                       <th>Jumlah Pengisian</th>
+                      <th>Jumlah Pengeluaran</th>
                       <th>Sisa Kas</th>
                       <th>Status Kas</th>
                       <th>Aksi</th>
@@ -92,12 +93,15 @@
                       <td><?=$no++;?></td>
                       <td><?=$l->nopengisian?></td>
                       <td><?=$l->tanggal?></td>
-                      <td><?=$l->jmasuk?></td>
-                      <td><?=$l->sisa?></td>
+                      <td align="right"><?=number_format($l->jmasuk)?></td>
+                      <td align="right"><?=number_format($l->jmasuk-$l->sisa)?></td>
+                      <td align="right"><?=number_format($l->sisa)?></td>
                       <td><?=$statuse?></td>
                       <td>
-                        <a data-toggle="tooltip" data-placement="bottom" title="Edit" target="_blank" class="btn btn-warning" href="<?=base_url()?>laporan/iktisar/<?=$l->nopengisian?>"><i class="fa fa-print"> Iktisar Pengeluaran</i></a>
                         
+                        <a data-toggle="tooltip" data-placement="bottom" title="Memo Permohonan Penggantian" target="_blank" class="btn btn-danger" href="<?=base_url()?>laporan/mpp/<?=$l->nopengisian?>"><i class="fa fa-print"> MPP</i></a>
+                        
+                        <a data-toggle="tooltip" data-placement="bottom" title="Iktisar Pengeluaran" target="_blank" class="btn btn-warning" href="<?=base_url()?>laporan/iktisar/<?=$l->nopengisian?>"><i class="fa fa-print"> Iktisar Pengeluaran</i></a>
                       </td>
                     </tr>
                     <?php    
