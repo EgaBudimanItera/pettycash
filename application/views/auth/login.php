@@ -47,11 +47,12 @@
       </div>
       <div class="row">
         <div class="col-xs-8">
-          <div class="checkbox icheck">
+          <!-- <div class="checkbox icheck">
             <label>
               <input type="checkbox"> Remember Me
             </label>
-          </div>
+          </div> -->
+          <a href="<?=base_url()?>auth/downloadfpp" target="_blank" class="btn btn-warning" title="Download FPP"><i class="fa fa-download"></i></a>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">

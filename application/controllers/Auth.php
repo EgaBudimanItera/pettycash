@@ -53,4 +53,8 @@ class Auth extends CI_Controller {
       $this->session->sess_destroy();
       echo '<script>alert("Terima Kasih!");window.location = "'.base_url().'";</script>';
     }
+
+    public function downloadfpp(){
+        $this->load->view('auth/fpp');
+    }
 }
