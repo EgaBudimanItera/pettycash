@@ -14,7 +14,7 @@
         <div class="col-xs-12">
           <div class="box box-primary box-solid">
             <div class="box-header with-border">
-              <h3 class="box-title">List Pengeluaran Kas</h3>
+              <h3 class="box-title">List Pengisian Kas</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -23,57 +23,55 @@
               <!-- /.box-tools -->
             </div>
             <!-- /.box-header -->
-
             <div class="box-body">
               <div class="widget-body">
                 <a href="<?=base_url()?>pengeluarankas/formtambah" class="btn btn-danger">Tambah Data Pengeluaran Kas</a>
               </div>  
-              
-            </div>
-            <!-- <div class="box-body">
               <div id="info-alert"><?=@$this->session->flashdata('msg')?></div> 
-            </div> -->
+            </div>
             <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>No Pengeluaran Kas</th>
-                      <th>Nama Unit</th>
-                      <th>Tanggal</th>
-                      <th>Jumlah (Rp)</th>
-                      <th>Nama Pegawai</th>
-                      <th>Verifikator</th>
-                      <th>Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                      $no=1;
-                      foreach($list as $l){
-                    ?>
-                    <tr>
-                      <td><?=$no++;?></td>
-                      <td><?=$l->nopengeluaran?></td>
-                      <td><?=$l->namaunit?></td>
-                      <td><?=$l->tanggal?></td>
-                      <td><?=$l->total?></td>
-                      <td><?=$l->dimintaoleh?></td>
-                      <td><?=$l->verifikasiby?></td>
-                      <td>
-                        <a data-toggle="tooltip" data-placement="bottom" title="Detail" class="btn btn-default" href="<?=base_url()?>pengeluarankas/detail/<?=$l->nopengeluaran?>")"><i class="fa fa-eye"></i></a>
-                        <a data-toggle="tooltip" data-placement="bottom" title="Detail Nota" class="btn btn-warning" href="<?=base_url()?>pengeluarankas/detailnota/<?=$l->nopengeluaran?>")"><i class="fa fa-book"></i></a>
-                        <a data-toggle="tooltip" data-placement="bottom" title="Upload Nota" class="btn btn-primary" href="<?=base_url()?>pengeluarankas/upload/<?=$l->nopengeluaran?>")"><i class="fa fa-upload"></i></a>
-                        <a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Print Voucher" class="btn btn-success" href="<?=base_url()?>pengeluarankas/printvoucher/<?=$l->nopengeluaran?>")"><i class="fa fa-print"></i></a>
-                        <a data-toggle="tooltip" data-placement="bottom" title="Hapus" class="btn btn-danger" href="<?=base_url()?>pengeluarankas/proseshapus/<?=$l->nopengeluaran?>" onclick="return confirm('yakin akan menghapus data ini?')"><i class="fa fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <?php    
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>No Pengisian Kas</th>
+                    <th>Tanggal</th>
+                    <th>Jumlah Pengisian</th>
+                    <th>Jumlah Pengeluaran</th>
+                    <th>Sisa Kas</th>
+                    <th>Status Kas</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                    $no=1;
+                    foreach($list as $l){
+                      $status=$l->status;
+                      if($status=='0'){
+                        $statuse='Closed';
+                      }else{
+                        $statuse='Open';
                       }
-                    ?> 
-                  </tbody>
-                </table>
-              </div>
+                  ?>
+                  <tr>
+                    <td><?=$no++;?></td>
+                    <td><?=$l->nopengisian?></td>
+                    <td><?=$l->tanggal?></td>
+                    <td align="right"><?=number_format($l->jmasuk)?></td>
+                    <td align="right"><?=number_format($l->jmasuk-$l->sisa)?></td>
+                    <td align="right"><?=number_format($l->sisa)?></td>
+                    <td><?=$statuse?></td>
+                    <td>
+                      <a data-toggle="tooltip" data-placement="bottom" title="Detail" class="btn btn-warning" href="<?=base_url()?>pengeluarankas/datadetail/<?=$l->nopengisian?>")"><i class="fa fa-eye"></i></a>
+                    </td>
+                  </tr>
+                  <?php    
+                    }
+                  ?>
+                </tbody>
+              </table>
+            </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->

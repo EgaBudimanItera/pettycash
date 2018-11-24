@@ -30,7 +30,35 @@ td.garis {
             <td width="55%">Kepada Yth</td>
             <td width="8%">Nomor</td>
             <td width="1%">:</td>
-            <td width="36%">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp/MACF/WKN/I/<?=date('Y')?></td>
+            <?php
+              $rom='';
+              if(date('m')=='1'){
+                $rom='I';
+              }elseif(date('m')=='2'){
+                $rom='II';
+              }elseif(date('m')=='3'){
+                $rom='III';
+              }elseif(date('m')=='4'){
+                $rom='IV';
+              }elseif(date('m')=='5'){
+                $rom='V';
+              }elseif(date('m')=='6'){
+                $rom='VI';
+              }elseif(date('m')=='7'){
+                $rom='VII';
+              }elseif(date('m')=='8'){
+                $rom='VIII';
+              }elseif(date('m')=='9'){
+                $rom='IX';
+              }elseif(date('m')=='10'){
+                $rom='X';
+              }elseif(date('m')=='11'){
+                $rom='XI';
+              }elseif(date('m')=='12'){
+                $rom='XII';
+              }
+            ?>
+            <td width="36%">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp/MACF/WKN/<?=$rom?>/<?=date('Y')?></td>
           </tr>
           <tr>
             <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFinance & Accounting Dept.</td>

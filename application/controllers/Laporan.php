@@ -43,6 +43,15 @@ class Laporan extends CI_Controller {
         $this->load->view('laporan/iktisar',$data);
     }    
 
+    public function ldkk($nopengisian){
+        $query="SELECT tanggal,status,jmasuk,jkeluar,keterangan,nopengeluaran,keterangan,nopengisian,sum(case when idjenis = 'J001' THEN jkeluar else 0 END) J001,sum(case when idjenis = 'J002' THEN jkeluar else 0 END) J002,sum(case when idjenis = 'J003' THEN jkeluar else 0 END) J003,sum(case when idjenis = 'J004' THEN jkeluar else 0 END) J004,sum(case when idjenis = 'J005' THEN jkeluar else 0 END) J005,sum(case when idjenis = 'J006' THEN jkeluar else 0 END) J006,sum(case when idjenis = 'J007' THEN jkeluar else 0 END) J007,sum(case when idjenis = 'J008' THEN jkeluar else 0 END) J008,sum(case when idjenis = 'J009' THEN jkeluar else 0 END) J009,sum(case when idjenis = 'J010' THEN jkeluar else 0 END) J010 FROM kas WHERE  nopengisian='$nopengisian' GROUP BY tanggal,nopengeluaran,keterangan ORDER BY idkas asc";
+        $data=array(
+           'list'=>$this->Petty_cash->kueri($query)->result(),
+        );
+        $this->load->view('laporan/ldkk',$data);
+    }    
+
+
     public function rekap(){
         $daritanggal=date_format(date_create($this->input->post('daritanggal',true)),"Y-m-d");
         $hinggatanggal=date_format(date_create($this->input->post('hinggatanggal',true)),"Y-m-d");

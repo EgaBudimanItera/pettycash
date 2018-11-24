@@ -18,17 +18,35 @@ class Pengeluarankas extends CI_Controller {
         //     }
         // }   
 	}
-   
+    
     public function index(){
-        $query="SELECT *,sum(jkeluar) as total FROM kas join unit on kas.idunit=unit.idunit join jenispengeluaran on kas.idjenis=jenispengeluaran.idjenis group by nopengeluaran";
+      $data = array(
+        'page' => 'pengeluaran/data',
+        'link' => 'pengeluaran',
+        'script'=>'',
+        'list'=>$this->Petty_cash->list_data_where('statusisi','0','kas')->result(),
+        'breadcrumb' => array(
+            'Beranda' => base_url() . 'berandaadmin',
+            'Data Pengeluaran Kas' => base_url() . 'pengeluarankas'),
+      );
+      $this->load->view('template/header',$data);
+      $this->load->view('template/sidebar');
+      $this->load->view('template/content');
+      $this->load->view('template/footer');  
+    }
+
+    public function datadetail($id){
+        $query="SELECT * FROM kas join unit on kas.idunit=unit.idunit join jenispengeluaran on kas.idjenis=jenispengeluaran.idjenis where nopengisian='$id' and status='2'";
         $data = array(
-            'page' => 'pengeluaran/data',
+            'page' => 'pengeluaran/datadetail',
             'link' => 'pengeluaran',
             'script'=>'',
             'list'=>$this->Petty_cash->kueri($query)->result(),
             'breadcrumb' => array(
-                'Beranda' => base_url() . 'berandaadmin',
-                'Data Pengeluaran Kas' => base_url() . 'pengeluarankas'),
+              'Beranda' => base_url() . 'berandaadmin',
+              'Data Pengeluaran Kas' => base_url() . 'pengeluarankas',
+              'Detail Pengeluaran Kas' => base_url() . 'pengeluarankas/datadetail/'.$id,
+            ),
         );
         $this->load->view('template/header',$data);
         $this->load->view('template/sidebar');

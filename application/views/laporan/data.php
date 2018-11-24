@@ -101,7 +101,9 @@
                         
                         <a data-toggle="tooltip" data-placement="bottom" title="Memo Permohonan Penggantian" target="_blank" class="btn btn-danger" href="<?=base_url()?>laporan/mpp/<?=$l->nopengisian?>"><i class="fa fa-print"> MPP</i></a>
                         
-                        <a data-toggle="tooltip" data-placement="bottom" title="Iktisar Pengeluaran" target="_blank" class="btn btn-warning" href="<?=base_url()?>laporan/iktisar/<?=$l->nopengisian?>"><i class="fa fa-print"> Iktisar Pengeluaran</i></a>
+                        <a data-toggle="tooltip" data-placement="bottom" title="Iktisar Pengeluaran" target="_blank" class="btn btn-warning" href="<?=base_url()?>laporan/iktisar/<?=$l->nopengisian?>"><i class="fa fa-print"> IP</i></a>
+
+                        <a data-toggle="tooltip" data-placement="bottom" title="Laporan Dana Kas Kecil" target="_blank" class="btn btn-success" href="<?=base_url()?>laporan/ldkk/<?=$l->nopengisian?>"><i class="fa fa-print"> LDKK</i></a>
                       </td>
                     </tr>
                     <?php    
