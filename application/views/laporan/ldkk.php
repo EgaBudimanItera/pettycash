@@ -230,6 +230,22 @@ td.garis {
                     
                   </tr>
                   <tr>
+                    <td colspan="2">Jumlah Pengisian Kembali Kas Kecil</td>
+                    <td colspan="2" align="right"><?=$pengeluaran?></td>
+                    
+                    <td align="right">&nbsp</td>
+                    <td align="right">&nbsp</td>
+                    <td align="right">&nbsp</td>
+                    <td align="right">&nbsp</td>
+                    <td align="right">&nbsp</td>
+                    <td align="right">&nbsp</td>
+                    <td align="right">&nbsp</td>
+                    <td align="right">&nbsp</td>
+                    <td align="right">&nbsp</td>
+                    <td align="right">&nbsp</td>
+                    
+                  </tr>
+                  <tr>
                     <td colspan="14">
                       <table width="100%">
                         <tr>
