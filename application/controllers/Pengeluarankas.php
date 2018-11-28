@@ -394,7 +394,7 @@ class Pengeluarankas extends CI_Controller {
       $nopengeluaran=$this->Petty_cash->nopengeluaran();
       $nopengisian=$this->input->post('nopengisian',true);
       $idunit=$this->input->post('idunit',true);
-      $tanggal=date_format(date_create($this->input->post('tglkeluar',true)),"Y-m-d");
+      $tanggal=date_format(date_create($this->input->post('tanggal',true)),"Y-m-d");
       $status='2';
       $statusisi='1';
       $verifikasiby=$this->input->post('verifikasiby',true);  

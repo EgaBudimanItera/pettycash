@@ -154,7 +154,7 @@ td.garis {
                    
                     <td>
                       <?php
-                        if($l->status=='1'){
+                        if($l->statusisi=='0'){
                           echo "Dana Awal(Kas)";
                         }else{
                           echo $l->keterangan;
@@ -164,7 +164,7 @@ td.garis {
                     </td>
                     <td align="right">
                       <?php
-                        if($l->status=='1'){
+                        if($l->statusisi=='0'){
                           echo $l->jmasuk;
                         }else{
                           echo '';
@@ -174,7 +174,7 @@ td.garis {
                     </td>
                     <td align="right">
                       <?php
-                        if($l->status=='2'){
+                        if($l->statusisi=='1'){
                           echo $l->jkeluar;
                         }else{
                           echo '';
@@ -230,7 +230,7 @@ td.garis {
                     
                   </tr>
                   <tr>
-                    <td colspan="2">Jumlah Pengisian Kembali Kas Kecil</td>
+                    <td colspan="2">Pengisian Kembali Kas Kecil</td>
                     <td colspan="2" align="right"><?=$pengeluaran?></td>
                     
                     <td align="right">&nbsp</td>
