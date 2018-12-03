@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Nama Unit</label>
-                  <input type="text" class="form-control"  required="" name="namaunit" placeholder="Nama Unit">
+                  <input type="text" class="form-control" onKeyPress="return angkadanhuruf(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',this)" required="" name="namaunit" placeholder="Nama Unit">
                 </div>
                </div>
               </div>

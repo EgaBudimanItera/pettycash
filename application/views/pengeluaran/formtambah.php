@@ -95,7 +95,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nama Pegawai Penerima Kas</label>
-                    <input type="text" class="form-control" value="" name="dimintaoleh" >
+                    <input type="text" class="form-control" onKeyPress="return angkadanhuruf(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',this)" value="" name="dimintaoleh" >
                   </div> 
                </div>
               </div>
@@ -125,7 +125,7 @@
                <div class="col-md-12">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Nama Verifikator</label>
-                  <input type="text" class="form-control" value="" name="verifikasiby" >
+                  <input type="text" class="form-control" onKeyPress="return angkadanhuruf(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',this)" value="" name="verifikasiby" >
                 </div>
                 
                </div>
@@ -196,13 +196,13 @@
             <div class="form-group">
                 <label for="exampleInputEmail1" class="col-sm-4 control-label">Keterangan</label>
                 <div class="col-sm-8">
-                  <textarea name="Keterangan" id="keterangan" class="form-control"></textarea>  
+                  <textarea name="Keterangan" id="keterangan" required="" class="form-control"></textarea>  
                 </div>
             </div> 
             <div class="form-group">
               <label for="inputEmail3" class="col-sm-4 control-label">Jumlah Pengeluaran</label>
               <div class="col-sm-8">
-                <input type="number" class="form-control" id="jkeluar" name="jkeluar">
+                <input type="number" class="form-control" id="jkeluar" required="" name="jkeluar">
               </div>
             </div>
           </div>

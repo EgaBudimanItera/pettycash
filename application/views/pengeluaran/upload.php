@@ -4,7 +4,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tambah Data Bahan Baku
+        Tambah Nota
       </h1>
       <?php $this->load->view('template/breadcrumb')?>
     </section>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Pilih File</label>
-                  <input type="file" class="form-control" required name="namafile"  id="file2preview">
+                  <input type="file" class="form-control" required name="namafile"  id="file2preview" accept="image/*">
                   <input type="hidden" class="form-control" value="<?=$nopengeluaran?>" name="nopengeluaran" >
                 </div>
                 <div class="form-group">

@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Nama Jenis Pengeluaran</label>
-                  <input type="text" class="form-control" value="<?=$list->namajenis?>" required="" name="namajenis" placeholder="Nama Jenis Pengeluaran">
+                  <input type="text" class="form-control" onKeyPress="return angkadanhuruf(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',this)" value="<?=$list->namajenis?>" required="" name="namajenis" placeholder="Nama Jenis Pengeluaran">
                 </div>
                 
                </div>
